@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1>ShoutOut</h1>
+    Current message: @Model.Message
+    Current image:
+    <img src="@Model.ImagePath" />
+</div>
+
+
+<form class="mt-5 text-center" method="post" enctype="multipart/form-data">
+    <input type="file" asp-for="Upload" />
+    <input asp-for="Message" />
+    <button type="submit">Submit</button>
+</form>
