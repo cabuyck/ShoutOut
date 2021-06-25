@@ -35,11 +35,11 @@ namespace ShoutOut.Pages
 
         public IActionResult OnPost()
         {
-            var ext = Path.GetExtension(Upload.FileName);
-            var file = Path.Combine(_environment.ContentRootPath, "wwwroot\\uploads", "image" + ext);
-            _logger.LogInformation("Writing user-submitted file to " + file);
             if (Upload != null)
             {
+                var ext = Path.GetExtension(Upload.FileName);
+                var file = Path.Combine(_environment.ContentRootPath, "wwwroot\\uploads", "image" + ext);
+                _logger.LogInformation("Writing user-submitted file to " + file);
                 var existingFiles = Directory.GetFiles(Path.Combine(_environment.ContentRootPath, "wwwroot\\uploads"));
                 existingFiles.ToList().ForEach(x => { var theFile = new FileInfo(x); theFile.Delete(); });
                 using (var fileStream = new FileStream(file, FileMode.Create))
